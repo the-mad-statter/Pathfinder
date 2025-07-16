@@ -55,11 +55,6 @@
       <artifactId>log4j-core</artifactId>
       <version>2.25.0</version>
     </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-      <version>3.18.0</version>
-    </dependency>
   </dependencies>
 
   <build>
@@ -160,6 +155,23 @@
                     <include>radiobutton.json</include>
                     <include>slider.json</include>
                     <include>target.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-readme</id>
+            <phase>package</phase>
+            <goals><goal>copy-resources</goal></goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/dist/${project.name}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/readme</directory>
+                  <includes>
+                    <include>README.pdf</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>

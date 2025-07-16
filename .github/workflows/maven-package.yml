@@ -36,5 +36,5 @@ jobs:
     - name: Upload Pathfinder directory
       uses: actions/upload-artifact@v4
       with:
-        name: pathfinder-${{ runner.os }}
+        name: Pathfinder-${{ runner.os }}
         path: target/dist/Pathfinder
