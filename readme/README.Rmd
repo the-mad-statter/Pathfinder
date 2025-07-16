@@ -33,7 +33,7 @@ print_tikz_header <- function(image, y) {
 }
 
 print_task_icon <- function(x) {
-  cat(sprintf("<img src=\"readme/img/%s\" align=\"left\" width=\"50px\" />", x))
+  cat(sprintf("<img src=\"readme/img/%s\" align=\"left\" width=\"25px\" />", x))
 }
 
 print_task_image <- function(x) {

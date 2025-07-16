@@ -96,7 +96,7 @@ instructions followed by the rating task.
 
 ### Task
 
-<img src="readme/img/combobox.png" align="left" width="50px" />
+<img src="readme/img/combobox.png" align="left" width="25px" />
 
 #### ComboBox
 
@@ -106,7 +106,7 @@ In the ComboBox task, all terms are presented on the screen in a
 grid-like fashion. Where one term’s row and another term’s column
 intersects, participants indicate their rating with a pull-down box.
 
-<img src="readme/img/draggable.png" align="left" width="50px" />
+<img src="readme/img/draggable.png" align="left" width="25px" />
 
 #### Draggable
 
@@ -116,7 +116,7 @@ In the Draggable task, all terms are presented randomly on screen.
 Participants indicate their ratings by dragging like terms closer
 together and disparate terms further apart.
 
-<img src="readme/img/radiobutton.png" align="left" width="50px" />
+<img src="readme/img/radiobutton.png" align="left" width="25px" />
 
 #### RadioButton
 
@@ -125,7 +125,7 @@ together and disparate terms further apart.
 In the RadioButton task, participants are shown two terms at a time and
 indicate their rating with radio buttons.
 
-<img src="readme/img/slider.png" align="left" width="50px" />
+<img src="readme/img/slider.png" align="left" width="25px" />
 
 #### Slider
 
@@ -134,7 +134,7 @@ indicate their rating with radio buttons.
 The Slider task is similar to the RadioButton task, but a slider is used
 instead of radio buttons.
 
-<img src="readme/img/target.png" align="left" width="50px" />
+<img src="readme/img/target.png" align="left" width="25px" />
 
 #### Target
 
