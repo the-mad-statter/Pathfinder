@@ -1,0 +1,31 @@
+{
+  "appTitle": "Pathfinder Target Task",
+  "width": 800,
+  "height": 600,
+  "decimals": 0,
+  "min": 1,
+  "max": 9,
+  "terms": [
+    "target term 1",
+    "target term 2",
+    "target term 3"
+  ],
+  "instructions": [
+    "Your task on the computer is to make judgments about the \"relatedness\" of pairs of terms that have to do with a task. There are several ways one might think about the terms being judged. For instance, two terms might be related because they share common features or because they frequently occur together. For this task think about the terms as they relate to performing the task.",
+    "\n",
+    "YOU SHOULD BASE YOUR RELATEDNESS JUDGMENTS ON HOW THE TERMS WORK TOGETHER TO HELP YOU PERFORM THE TASK WELL.",
+    "\n",
+    "The major goal of the task is to achieve a goal. This is accomplished by: (1) First sub-goal description, (2) Second sub-goal description, and (3) A third sub-goal description. Thus, when making your relatedness judgments you should think about the task terms in relation to these 3 sub-goals.",
+    "\n",
+    "This task involves judging how related a set of terms are to one another using a visual, spatial interface. The screen will display a circular target with a central bullseye. The task consists of n − 1 rounds, where n is the number of terms. In each round one term is randomly selected and placed in the bullseye as the anchor term while other terms are displayed in random positions around the target. After a term has been used as an anchor, it will not be included in future rounds, and the next round selects a new anchor from the remaining terms. This continues until all pairwise relationships have been assessed through n − 1 rounds.",
+    "\n",
+    "Your task is to drag each surrounding term closer to or farther from the bullseye, based on how related it is to the anchor term. More related terms should be placed closer to the bullseye while less related terms should be placed farther away.",
+    "\n",
+    "WHEN MAKING YOUR RATINGS, REMEMBER BACK TO PERFORMING THE TASK AND THINK ABOUT HOW THE TERMS ARE RELATED IN ACCOMPLISHING THE MAJOR GOAL."
+  ],
+  "debriefing": [
+    "You have completed rating all of the terms.",
+    "\n",
+    "Please advise the experimenter you have finished."
+  ]
+}

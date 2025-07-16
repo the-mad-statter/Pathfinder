@@ -1,0 +1,31 @@
+{
+  "appTitle": "Pathfinder Draggable Task",
+  "width": 800,
+  "height": 600,
+  "decimals": 0,
+  "min": 1,
+  "max": 9,
+  "terms": [
+    "draggable term 1",
+    "draggable term 2",
+    "draggable term 3"
+  ],
+  "instructions": [
+    "Your task on the computer is to make judgments about the \"relatedness\" of pairs of terms that have to do with a task. There are several ways one might think about the terms being judged. For instance, two terms might be related because they share common features or because they frequently occur together. For this task think about the terms as they relate to performing the task.",
+    "\n",
+    "YOU SHOULD BASE YOUR RELATEDNESS JUDGMENTS ON HOW THE TERMS WORK TOGETHER TO HELP YOU PERFORM THE TASK WELL.",
+    "\n",
+    "The major goal of the task is to achieve a goal. This is accomplished by: (1) First sub-goal description, (2) Second sub-goal description, and (3) A third sub-goal description. Thus, when making your relatedness judgments you should think about the task terms in relation to these 3 sub-goals.",
+    "\n",
+    "All terms will be placed randomly on the screen. The distance between each pair of terms will represent the degree of relatedness for those terms. Smaller distances represent higher relatedness while larger distances represent lower relatedness.",
+    "\n",
+    "You are to indicate your judgement of relatedness for the terms by dragging and dropping. Place related terms closer together and unrelated terms further apart. When you are satisfied with the ratings you have given, click the submit button to complete the task.",
+    "\n",
+    "WHEN MAKING YOUR RATINGS, REMEMBER BACK TO PERFORMING THE TASK AND THINK ABOUT HOW THE TERMS ARE RELATED IN ACCOMPLISHING THE MAJOR GOAL."
+  ],
+  "debriefing": [
+    "You have completed rating all of the terms.",
+    "\n",
+    "Please advise the experimenter you have finished."
+  ]
+}

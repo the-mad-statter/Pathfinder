@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.themadstatter.pathfinder</groupId>
+  <artifactId>Pathfinder</artifactId>
+  <version>1.0.0.0</version>
+
+  <name>Pathfinder</name>
+  <url>https://github.com/the-mad-statter/Pathfinder</url>
+
+  <organization>
+    <name>The Mad Statter, Inc.</name>
+  </organization>
+
+  <inceptionYear>2025</inceptionYear>
+  <description>Pathfinder is a suite of tools for working with pathfinder networks.</description>
+
+  <properties>
+    <maven.compiler.source>23</maven.compiler.source>
+    <maven.compiler.target>23</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.mainClass>com.themadstatter.pathfinder.Pathfinder</project.mainClass>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-bom</artifactId>
+        <version>2.25.0</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.13.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.25.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.25.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.18.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <!-- maven-shade-plugin to create fat/uber jar -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals><goal>shade</goal></goals>
+            <configuration>
+              <createDependencyReducedPom>false</createDependencyReducedPom>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>${project.mainClass}</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- maven-antrun-plugin to copy fat/uber jar to empty directory -->
+      <plugin>
+      <artifactId>maven-antrun-plugin</artifactId>
+      <version>3.1.0</version>
+      <executions>
+      <execution>
+        <id>isolate-fat-jar</id>
+        <phase>package</phase>
+        <goals><goal>run</goal></goals>
+        <configuration>
+          <target>
+            <copy file="${project.build.directory}/${project.build.finalName}.jar"
+                  todir="${project.build.directory}/jpackage-input/${project.build.finalName}.jar"/>
+          </target>
+        </configuration>
+      </execution>
+      </executions>
+      </plugin>
+
+      <!-- exec-maven-plugin to run jpackage -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>jpackage</id>
+            <phase>package</phase>
+            <goals><goal>exec</goal></goals>
+            <configuration>
+              <executable>jpackage</executable>
+              <arguments>
+                <argument>--name</argument><argument>${project.name}</argument>
+                <argument>--app-version</argument><argument>${project.version}</argument>
+                <argument>--description</argument><argument>${project.description}</argument>
+                <argument>--vendor</argument><argument>${project.organization.name}</argument>
+                <argument>--copyright</argument><argument>${project.inceptionYear}</argument>
+                <argument>--icon</argument><argument>${project.basedir}/icons/pathfinder.ico</argument>
+                <argument>--dest</argument><argument>${project.build.directory}/dist</argument>
+                <argument>--type</argument><argument>app-image</argument>
+                <argument>--input</argument><argument>${project.build.directory}/jpackage-input</argument>
+                <argument>--main-jar</argument><argument>${project.build.finalName}.jar</argument>
+                <argument>--main-class</argument><argument>${project.mainClass}</argument>
+                <argument>--add-launcher</argument><argument>ComboBoxApp=${project.basedir}/jpackage/launcher-combobox.properties</argument>
+                <argument>--add-launcher</argument><argument>DraggableApp=${project.basedir}/jpackage/launcher-draggable.properties</argument>
+                <argument>--add-launcher</argument><argument>RadioButtonApp=${project.basedir}/jpackage/launcher-radiobutton.properties</argument>
+                <argument>--add-launcher</argument><argument>SliderApp=${project.basedir}/jpackage/launcher-slider.properties</argument>
+                <argument>--add-launcher</argument><argument>TargetApp=${project.basedir}/jpackage/launcher-target.properties</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- maven-resources-plugin to copy json settings files -->
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>package</phase>
+            <goals><goal>copy-resources</goal></goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/dist/${project.name}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}</directory>
+                  <includes>
+                    <include>combobox.json</include>
+                    <include>draggable.json</include>
+                    <include>radiobutton.json</include>
+                    <include>slider.json</include>
+                    <include>target.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Compiler Plugin -->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

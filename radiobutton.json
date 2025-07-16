@@ -1,0 +1,31 @@
+{
+  "appTitle": "Pathfinder Radiobutton Task",
+  "width": 800,
+  "height": 600,
+  "decimals": 0,
+  "min": 1,
+  "max": 9,
+  "terms": [
+    "radiobutton term 1",
+    "radiobutton term 2",
+    "radiobutton term 3"
+  ],
+  "instructions": [
+    "Your task on the computer is to make judgments about the \"relatedness\" of pairs of terms that have to do with a task. There are several ways one might think about the terms being judged. For instance, two terms might be related because they share common features or because they frequently occur together. For this task think about the terms as they relate to performing the task.",
+    "\n",
+    "YOU SHOULD BASE YOUR RELATEDNESS JUDGMENTS ON HOW THE TERMS WORK TOGETHER TO HELP YOU PERFORM THE TASK WELL.",
+    "\n",
+    "The major goal of the task is to achieve a goal. This is accomplished by: (1) First sub-goal description, (2) Second sub-goal description, and (3) A third sub-goal description. Thus, when making your relatedness judgments you should think about the task terms in relation to these 3 sub-goals.",
+    "\n",
+    "Each pair of terms will be presented on the screen along with a \"relatedness\" scale. You can think of the points along the scale as representing degrees of relatedness ranging from \"1\", not at all related to \"9\", highly related.",
+    "\n",
+    "You are to indicate your judgement of relatedness for each pair of terms by pressing the number key that represents your rating. Upon responding, the radio button corresponding to the number you pressed will be selected. If you wish to change your rating, simply press another number. When you are satisfied with the rating you have given, press the <SPACE BAR> to enter your response. Following this, the next pair of terms will be displayed.",
+    "\n",
+    "WHEN MAKING YOUR RATINGS, REMEMBER BACK TO PERFORMING THE TASK AND THINK ABOUT HOW THE TERMS ARE RELATED IN ACCOMPLISHING THE MAJOR GOAL."
+  ],
+  "debriefing": [
+    "You have completed rating all of the terms.",
+    "\n",
+    "Please advise the experimenter you have finished."
+  ]
+}
