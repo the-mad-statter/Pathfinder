@@ -32,6 +32,10 @@ print_tikz_header <- function(image, y) {
   ))
 }
 
+print_task_icon <- function(x) {
+  cat(sprintf("<img src=\"readme/img/%s\" align=\"left\" width=\"50px\" />", x))
+}
+
 print_task_image <- function(x) {
   if(knitr::is_html_output())
     cat(sprintf("<img src=\"readme/img/%s\" width=\"400px\" />", x))
@@ -114,7 +118,11 @@ Once the ID is confirmed, the participant views the starting instructions follow
 
 ### Task
 
-#### ComboBox <img src="readme/img/combobox.png" align="right" width="50px" />
+```{r, include=knitr::is_html_output(), results="asis"}
+print_task_icon("combobox.png")
+```
+
+#### ComboBox
 
 ```{r, include=knitr::is_latex_output(), results="asis"}
 print_tikz_header("combobox.png", -1)
@@ -126,7 +134,11 @@ print_task_image("combobox_task.png")
 
 In the ComboBox task, all terms are presented on the screen in a grid-like fashion. Where one term's row and another term's column intersects, participants indicate their rating with a pull-down box.
 
-#### Draggable <img src="readme/img/draggable.png" align="right" width="50px" />
+```{r, include=knitr::is_html_output(), results="asis"}
+print_task_icon("draggable.png")
+```
+
+#### Draggable
 
 ```{r, include=knitr::is_latex_output(), results="asis"}
 print_tikz_header("draggable.png", -4.6)
@@ -142,7 +154,11 @@ In the Draggable task, all terms are presented randomly on screen. Participants 
 cat("\\newpage")
 ```
 
-#### RadioButton <img src="readme/img/radiobutton.png" align="right" width="50px" />
+```{r, include=knitr::is_html_output(), results="asis"}
+print_task_icon("radiobutton.png")
+```
+
+#### RadioButton
 
 ```{r, include=knitr::is_latex_output(), results="asis"}
 print_tikz_header("radiobutton.png", -0.78)
@@ -154,7 +170,11 @@ print_task_image("radiobutton_task.png")
 
 In the RadioButton task, participants are shown two terms at a time and indicate their rating with radio buttons.
 
-#### Slider <img src="readme/img/slider.png" align="right" width="50px" />
+```{r, include=knitr::is_html_output(), results="asis"}
+print_task_icon("slider.png")
+```
+
+#### Slider
 
 ```{r, include=knitr::is_latex_output(), results="asis"}
 print_tikz_header("slider.png", -4.35)
@@ -170,7 +190,11 @@ The Slider task is similar to the RadioButton task, but a slider is used instead
 cat("\\newpage")
 ```
 
-#### Target <img src="readme/img/target.png" align="right" width="50px" />
+```{r, include=knitr::is_html_output(), results="asis"}
+print_task_icon("target.png")
+```
+
+#### Target
 
 ```{r, include=knitr::is_latex_output(), results="asis"}
 print_tikz_header("target.png", -0.79)
