@@ -105,16 +105,6 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
         <version>3.1.0</version>
-        <executions>
-          <execution>
-            <id>jpackage</id>
-            <phase>package</phase>
-            <goals><goal>exec</goal></goals>
-          </execution>
-        </executions>
-        <configuration>
-          <executable>jpackage</executable>
-        </configuration>
       </plugin>
 
       <!-- maven-resources-plugin to copy json settings files -->
@@ -194,7 +184,10 @@
             <executions>
               <execution>
                 <id>jpackage</id>
+                <phase>package</phase>
+                <goals><goal>exec</goal></goals>
                 <configuration>
+                  <executable>jpackage</executable>
                   <arguments>
                     <argument>--name</argument><argument>${project.name}</argument>
                     <argument>--app-version</argument><argument>${project.version}</argument>
@@ -237,24 +230,24 @@
             <executions>
               <execution>
                 <id>jpackage</id>
+                <phase>package</phase>
+                <goals><goal>exec</goal></goals>
                 <configuration>
+                  <executable>jpackage</executable>
                   <arguments>
                     <argument>--name</argument><argument>${project.name}</argument>
                     <argument>--app-version</argument><argument>${project.version}</argument>
                     <argument>--description</argument><argument>${project.description}</argument>
                     <argument>--vendor</argument><argument>${project.organization.name}</argument>
-                    <argument>--copyright</argument><argument>${project.inceptionYear}</argument>
-                    <argument>--icon</argument><argument>${project.basedir}/icons/pathfinder.icns</argument>
+                    <argument>--copyright</argument><argument>${project.inceptionYear}</argument>               
                     <argument>--dest</argument><argument>${project.build.directory}/dist</argument>
                     <argument>--type</argument><argument>app-image</argument>
                     <argument>--input</argument><argument>${project.build.directory}/jpackage-input</argument>
                     <argument>--main-jar</argument><argument>${project.build.finalName}.jar</argument>
                     <argument>--main-class</argument><argument>${project.mainClass}</argument>
-                    <argument>--add-launcher</argument><argument>ComboBoxApp=${project.basedir}/jpackage/mac/launcher-combobox.properties</argument>
-                    <argument>--add-launcher</argument><argument>DraggableApp=${project.basedir}/jpackage/mac/launcher-draggable.properties</argument>
-                    <argument>--add-launcher</argument><argument>RadioButtonApp=${project.basedir}/jpackage/mac/launcher-radiobutton.properties</argument>
-                    <argument>--add-launcher</argument><argument>SliderApp=${project.basedir}/jpackage/mac/launcher-slider.properties</argument>
-                    <argument>--add-launcher</argument><argument>TargetApp=${project.basedir}/jpackage/mac/launcher-target.properties</argument>
+                    
+                    
+                    
                   </arguments>
                 </configuration>
               </execution>
@@ -280,7 +273,10 @@
             <executions>
               <execution>
                 <id>jpackage</id>
+                <phase>package</phase>
+                <goals><goal>exec</goal></goals>
                 <configuration>
+                  <executable>jpackage</executable>
                   <arguments>
                     <argument>--name</argument><argument>${project.name}</argument>
                     <argument>--app-version</argument><argument>${project.version}</argument>
