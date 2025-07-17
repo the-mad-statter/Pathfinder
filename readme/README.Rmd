@@ -74,7 +74,7 @@ print_latex_header <- function(level, name, image, y) {
 }
 
 print_html_task_image <- function(image) {
-  cat(html_img(image, "left", 400))
+  cat(html_img(image, "none", 400))
   cat("\n\n")
 }
 
