@@ -13,14 +13,16 @@ header-includes:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
-html_img <- function(image, align, width = 125) {
-  as.character(
-    shiny::tags$img(
-      src = sprintf("readme/img/%s", image),
-      align = align,
-      width = sprintf("%ipx", width)
-    )
-  )
+html_img <- function(image, align = "none", width = 125) {
+  src <- sprintf("readme/img/%s", image)
+  width <- sprintf("%ipx", width)
+  
+  if (align == "none")
+    tag <- shiny::tags$img(src = src, width = width)
+  else
+    tag <- shiny::tags$img(src = src, align = align, width = width)
+  
+  as.character(tag)
 }
 
 print_html_header <- function(level, name, image, width, trailing_image = TRUE) {
