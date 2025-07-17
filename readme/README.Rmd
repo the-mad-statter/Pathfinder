@@ -13,21 +13,12 @@ header-includes:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
-html_img <- function(image, align = "none", width = 125) {
-  src <- sprintf("readme/img/%s", image)
+print_html_header <- function(level, name, image, width, trailing_image = TRUE) {
+  image <- sprintf("readme/img/%s", image)
   width <- sprintf("%ipx", width)
   
-  if (align == "none")
-    tag <- shiny::tags$img(src = src, width = width)
-  else
-    tag <- shiny::tags$img(src = src, align = align, width = width)
-  
-  as.character(tag)
-}
-
-print_html_header <- function(level, name, image, width, trailing_image = TRUE) {
   if(!trailing_image)
-    cat(html_img(image, "left", width))
+    cat(as.character(shiny::tags$img(src = image, align = "left", width = width)))
   
   cat("\n\n")
   
@@ -37,7 +28,7 @@ print_html_header <- function(level, name, image, width, trailing_image = TRUE) 
   cat("", name)
   
   if(trailing_image)
-    cat("", html_img(image, "right", width))
+    cat("", as.character(shiny::tags$img(src = image, align = "right", width = width)))
   
   cat("\n\n")
 }
@@ -74,7 +65,8 @@ print_latex_header <- function(level, name, image, y) {
 }
 
 print_html_task_image <- function(image) {
-  cat(html_img(image, "none", 400))
+  image <- sprintf("readme/img/%s", image)
+  cat(as.character(shiny::tags$img(src = image, width = "400px")))
   cat("\n\n")
 }
 
@@ -166,7 +158,7 @@ Once the ID is confirmed, the participant views the starting instructions follow
 
 ```{r, results="asis"}
 if (knitr::is_html_output()) {
-  print_html_header(4, "ComboBox", "combobox.png", 15, FALSE)
+  print_html_header(4, "ComboBox", "combobox.png", 20, FALSE)
   print_html_task_image("combobox_task.png")
 }
 
@@ -180,7 +172,7 @@ In the ComboBox task, all terms are presented on the screen in a grid-like fashi
 
 ```{r, results="asis"}
 if (knitr::is_html_output()) {
-  print_html_header(4, "Draggable", "draggable.png", 15, FALSE)
+  print_html_header(4, "Draggable", "draggable.png", 20, FALSE)
   print_html_task_image("draggable_task.png")
 }
 
@@ -194,7 +186,7 @@ In the Draggable task, all terms are presented randomly on screen. Participants 
 
 ```{r, results="asis"}
 if (knitr::is_html_output()) {
-  print_html_header(4, "RadioButton", "radiobutton.png", 15, FALSE)
+  print_html_header(4, "RadioButton", "radiobutton.png", 20, FALSE)
   print_html_task_image("radiobutton_task.png")
 }
 
@@ -209,7 +201,7 @@ In the RadioButton task, participants are shown two terms at a time and indicate
 
 ```{r, results="asis"}
 if (knitr::is_html_output()) {
-  print_html_header(4, "Slider", "slider.png", 15, FALSE)
+  print_html_header(4, "Slider", "slider.png", 20, FALSE)
   print_html_task_image("slider_task.png")
 }
 
@@ -223,7 +215,7 @@ The Slider task is similar to the RadioButton task, but a slider is used instead
 
 ```{r, results="asis"}
 if (knitr::is_html_output()) {
-  print_html_header(4, "Target", "target.png", 15, FALSE)
+  print_html_header(4, "Target", "target.png", 20, FALSE)
   print_html_task_image("target_task.png")
 }
 
