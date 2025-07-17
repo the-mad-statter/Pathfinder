@@ -13,9 +13,36 @@ header-includes:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
-print_tikz_header <- function(image, y) {
-  cat(sprintf(r"(
-\begin{tikzpicture}[remember picture, overlay]
+html_img <- function(image, align, width = 125) {
+  as.character(
+    shiny::tags$img(
+      src = sprintf("readme/img/%s", image),
+      align = align,
+      width = sprintf("%ipx", width)
+    )
+  )
+}
+
+print_html_header <- function(level, name, image, width, trailing_image = TRUE) {
+  if(!trailing_image)
+    cat(html_img(image, "left", width))
+  
+  cat("\n\n")
+  
+  for (i in seq_along(1:level))
+    cat("#")
+  
+  cat("", name)
+  
+  if(trailing_image)
+    cat("", html_img(image, "right", width))
+  
+  cat("\n\n")
+}
+
+tikz_header <- function(image, y) {
+  sprintf(
+r"(\begin{tikzpicture}[remember picture, overlay]
     \node[anchor=north east] (img) at ($(current page.north east) + (-1in,%fin)$)
         {\includegraphics[width=0.1\textwidth]{img/%s}};
 
@@ -26,43 +53,60 @@ print_tikz_header <- function(image, y) {
     \draw[thick] ($(lineStart |- lineY)$) -- ($(lineEnd |- lineY)$);
 
 \end{tikzpicture}
+
 )", 
     y, 
     image
-  ))
+  )
 }
 
-print_task_icon <- function(x) {
-  cat(sprintf("<img src=\"readme/img/%s\" align=\"left\" width=\"25px\" />", x))
-}
-
-print_task_image <- function(x) {
-  if(knitr::is_html_output())
-    cat(sprintf("<img src=\"readme/img/%s\" width=\"400px\" />", x))
+print_latex_header <- function(level, name, image, y) {
+  for (i in seq_along(1:level))
+    cat("#")
   
-  if(knitr::is_latex_output())
-    cat(sprintf("\\vspace{0.25in}\\begin{center}\\includegraphics[width=0.5\\textwidth]{img/%s}\\end{center}", x))
+  cat("", name)
+  
+  cat("\n\n")
+  
+  cat(tikz_header(image, y))
 }
 
-file.move <- function(from, to, overwrite = TRUE) {
-  if (file.copy(from, to, overwrite))
-    unlink(from)
+print_html_task_image <- function(image) {
+  cat(html_img(image, "left", 400))
+  cat("\n\n")
+}
+
+print_latex_task_image <- function(image) {
+  cat(sprintf(
+r"(\vspace{0.25in}
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{img/%s}
+\end{center}
+
+)",
+    image
+  ))
 }
 ```
 
-## Pathfinder <img src="readme/img/pathfinder.png" align="right" width="125px" />
+```{r, results="asis"}
+if (knitr::is_html_output())
+  print_html_header(2, "Pathfinder", "pathfinder.png", 125)
 
-```{r, include=knitr::is_latex_output(), results="asis"}
-print_tikz_header("pathfinder.png", -0.79)
+if (knitr::is_latex_output())
+  print_latex_header(2, "Pathfinder", "pathfinder.png", -0.79)
 ```
 
 ```{r, include=knitr::is_html_output(), results="asis"}
-cat(r"(
+cat(
+r"(
 [![Project Status: Inactive - The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/the-mad-statter/Pathfinder)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/the-mad-statter/Pathfinder)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-)")
+)"
+)
 ```
 
 ## Overview
@@ -118,90 +162,74 @@ Once the ID is confirmed, the participant views the starting instructions follow
 
 ### Task
 
-```{r, include=knitr::is_html_output(), results="asis"}
-print_task_icon("combobox.png")
-```
-
-#### ComboBox
-
-```{r, include=knitr::is_latex_output(), results="asis"}
-print_tikz_header("combobox.png", -1)
-```
-
 ```{r, results="asis"}
-print_task_image("combobox_task.png")
+if (knitr::is_html_output()) {
+  print_html_header(4, "ComboBox", "combobox.png", 15, FALSE)
+  print_html_task_image("combobox_task.png")
+}
+
+if (knitr::is_latex_output()) {
+  print_latex_header(4, "ComboBox", "combobox.png", -1)
+  print_latex_task_image("combobox_task.png")
+}
 ```
 
 In the ComboBox task, all terms are presented on the screen in a grid-like fashion. Where one term's row and another term's column intersects, participants indicate their rating with a pull-down box.
 
-```{r, include=knitr::is_html_output(), results="asis"}
-print_task_icon("draggable.png")
-```
-
-#### Draggable
-
-```{r, include=knitr::is_latex_output(), results="asis"}
-print_tikz_header("draggable.png", -4.6)
-```
-
 ```{r, results="asis"}
-print_task_image("draggable_task.png")
+if (knitr::is_html_output()) {
+  print_html_header(4, "Draggable", "draggable.png", 15, FALSE)
+  print_html_task_image("draggable_task.png")
+}
+
+if (knitr::is_latex_output()) {
+  print_latex_header(4, "Draggable", "draggable.png", -4.6)
+  print_latex_task_image("draggable_task.png")
+}
 ```
 
 In the Draggable task, all terms are presented randomly on screen. Participants indicate their ratings by dragging like terms closer together and disparate terms further apart.
 
-```{r, include=knitr::is_latex_output(), results="asis"}
-cat("\\newpage")
-```
-
-```{r, include=knitr::is_html_output(), results="asis"}
-print_task_icon("radiobutton.png")
-```
-
-#### RadioButton
-
-```{r, include=knitr::is_latex_output(), results="asis"}
-print_tikz_header("radiobutton.png", -0.78)
-```
-
 ```{r, results="asis"}
-print_task_image("radiobutton_task.png")
+if (knitr::is_html_output()) {
+  print_html_header(4, "RadioButton", "radiobutton.png", 15, FALSE)
+  print_html_task_image("radiobutton_task.png")
+}
+
+if (knitr::is_latex_output()) {
+  cat(r"(\newpage)")
+  print_latex_header(4, "RadioButton", "radiobutton.png", -0.79)
+  print_latex_task_image("radiobutton_task.png")
+}
 ```
 
 In the RadioButton task, participants are shown two terms at a time and indicate their rating with radio buttons.
 
-```{r, include=knitr::is_html_output(), results="asis"}
-print_task_icon("slider.png")
-```
-
-#### Slider
-
-```{r, include=knitr::is_latex_output(), results="asis"}
-print_tikz_header("slider.png", -4.35)
-```
-
 ```{r, results="asis"}
-print_task_image("slider_task.png")
+if (knitr::is_html_output()) {
+  print_html_header(4, "Slider", "slider.png", 15, FALSE)
+  print_html_task_image("slider_task.png")
+}
+
+if (knitr::is_latex_output()) {
+  print_latex_header(4, "Slider", "slider.png", -4.35)
+  print_latex_task_image("slider_task.png")
+}
 ```
 
 The Slider task is similar to the RadioButton task, but a slider is used instead of radio buttons.
 
-```{r, include=knitr::is_latex_output(), results="asis"}
-cat("\\newpage")
-```
-
-```{r, include=knitr::is_html_output(), results="asis"}
-print_task_icon("target.png")
-```
-
-#### Target
-
-```{r, include=knitr::is_latex_output(), results="asis"}
-print_tikz_header("target.png", -0.79)
-```
-
 ```{r, results="asis"}
-print_task_image("target_task.png")
+if (knitr::is_html_output()) {
+  print_html_header(4, "Target", "target.png", 15, FALSE)
+  print_html_task_image("target_task.png")
+}
+
+if (knitr::is_latex_output()) {
+  cat(r"(\newpage)")
+  print_latex_header(4, "Target", "target.png", -0.79)
+  print_latex_task_image("target_task.png")
+}
 ```
 
 The Target task is similar to the Draggable task, but there is a circular target with a central bullseye. The task consists of n − 1 rounds, where n is the number of terms. In each round one term is randomly selected and placed in the bullseye as the anchor term while other terms are displayed in random positions around the target. After a term has been used as an anchor, it will not be included in future rounds, and the next round selects a new anchor from the remaining terms. This continues until all pairwise relationships have been assessed through n − 1 rounds.
@@ -210,10 +238,12 @@ The Target task is similar to the Draggable task, but there is a circular target
 
 After the rating task is completed, the debriefing instructions are presented in the same manner as the introductory instructions.
 
-## About The Mad Statter <img src="readme/img/themadstatter.png" align="right" width="125px" />
+```{r, results="asis"}
+if (knitr::is_html_output())
+  print_html_header(2, "About The Mad Statter", "themadstatter.png", 125)
 
-```{r, include=knitr::is_latex_output(), results="asis"}
-print_tikz_header("themadstatter.png", -5.85)
+if (knitr::is_latex_output())
+  print_latex_header(2, "About The Mad Statter", "themadstatter.png", -5.85)
 ```
 
 [The Mad Statter](https://www.themadstatter.com) is a premier statistical consulting and programming firm dedicated to delivering rigorous, data-driven solutions tailored to meet the unique needs of researchers, businesses, and organizations. Combining deep expertise in statistics, advanced programming skills, and industry best practices, The Mad Statter empowers clients to unlock insights, optimize decision-making, and drive impactful outcomes.
@@ -221,15 +251,3 @@ print_tikz_header("themadstatter.png", -5.85)
 Our services span study design, data management, statistical analysis, predictive modeling, and visualization, leveraging a wide range of software platforms and programming languages. Whether supporting academic research, clinical trials, market research, or operational analytics, The Mad Statter provides clear, actionable results with an emphasis on quality, transparency, and collaboration.
 
 At The Mad Statter, we are passionate about transforming complex data challenges into streamlined, understandable solutions helping you make smarter decisions with confidence.
-
-```{r, echo=FALSE, eval=FALSE}
-rmarkdown::render("README.Rmd", rmarkdown::github_document())
-unlink("README.html")
-file.move("README.md", "../README.md")
-```
-
-```{r, echo=FALSE, eval=FALSE}
-rmarkdown::render("README.Rmd", rmarkdown::pdf_document(latex_engine = "xelatex"))
-```
-
-

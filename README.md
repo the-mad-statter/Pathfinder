@@ -7,7 +7,7 @@
 
 
 
-## Pathfinder <img src="readme/img/pathfinder.png" align="right" width="125px" />
+## Pathfinder <img src="readme/img/pathfinder.png" align="right" width="125px"/>
 
 [![Project Status: Inactive - The project has reached a stable, usable
 state but is no longer being actively developed; support/maintenance
@@ -96,49 +96,49 @@ instructions followed by the rating task.
 
 ### Task
 
-<img src="readme/img/combobox.png" align="left" width="25px" />
+<img src="readme/img/combobox.png" align="left" width="15px"/>
 
 #### ComboBox
 
-<img src="readme/img/combobox_task.png" width="400px" />
+<img src="readme/img/combobox_task.png" align="left" width="400px"/>
 
 In the ComboBox task, all terms are presented on the screen in a
 grid-like fashion. Where one term’s row and another term’s column
 intersects, participants indicate their rating with a pull-down box.
 
-<img src="readme/img/draggable.png" align="left" width="25px" />
+<img src="readme/img/draggable.png" align="left" width="15px"/>
 
 #### Draggable
 
-<img src="readme/img/draggable_task.png" width="400px" />
+<img src="readme/img/draggable_task.png" align="left" width="400px"/>
 
 In the Draggable task, all terms are presented randomly on screen.
 Participants indicate their ratings by dragging like terms closer
 together and disparate terms further apart.
 
-<img src="readme/img/radiobutton.png" align="left" width="25px" />
+<img src="readme/img/radiobutton.png" align="left" width="15px"/>
 
 #### RadioButton
 
-<img src="readme/img/radiobutton_task.png" width="400px" />
+<img src="readme/img/radiobutton_task.png" align="left" width="400px"/>
 
 In the RadioButton task, participants are shown two terms at a time and
 indicate their rating with radio buttons.
 
-<img src="readme/img/slider.png" align="left" width="25px" />
+<img src="readme/img/slider.png" align="left" width="15px"/>
 
 #### Slider
 
-<img src="readme/img/slider_task.png" width="400px" />
+<img src="readme/img/slider_task.png" align="left" width="400px"/>
 
 The Slider task is similar to the RadioButton task, but a slider is used
 instead of radio buttons.
 
-<img src="readme/img/target.png" align="left" width="25px" />
+<img src="readme/img/target.png" align="left" width="15px"/>
 
 #### Target
 
-<img src="readme/img/target_task.png" width="400px" />
+<img src="readme/img/target_task.png" align="left" width="400px"/>
 
 The Target task is similar to the Draggable task, but there is a
 circular target with a central bullseye. The task consists of n − 1
@@ -155,7 +155,7 @@ assessed through n − 1 rounds.
 After the rating task is completed, the debriefing instructions are
 presented in the same manner as the introductory instructions.
 
-## About The Mad Statter <img src="readme/img/themadstatter.png" align="right" width="125px" />
+## About The Mad Statter <img src="readme/img/themadstatter.png" align="right" width="125px"/>
 
 [The Mad Statter](https://www.themadstatter.com) is a premier
 statistical consulting and programming firm dedicated to delivering
